@@ -11,8 +11,8 @@ const applications = constructApplications({
   routes,
   loadApp({ name }) {
     const moduleMap = {
-      "@app/list": () => import("home/module"),
-      "@app/form": () => import("login/module"),
+      "@app/list": () => import("list/module"),
+      "@app/form": () => import("form/module"),
     };
     return moduleMap[name]();
   },

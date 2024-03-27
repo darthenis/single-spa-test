@@ -6,7 +6,7 @@ module.exports = (config, options) => {
   // Feel free to modify this webpack config however you'd like to
   config.output = {
     ...config.output,
-    uniqueName: "home",
+    uniqueName: "list",
   };
   config.optimization = { ...config.optimization, runtimeChunk: false };
   config.plugins = [
@@ -33,6 +33,11 @@ module.exports = (config, options) => {
           strictVersion: true,
           requiredVersion: "~7.8.0",
         },
+        "single-spa": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "^6.0.1",
+        },
         "single-spa-angular": {
           singleton: true,
           strictVersion: true,
@@ -42,11 +47,12 @@ module.exports = (config, options) => {
       remotes: {
         store: "store@http://localhost:8080/remoteEntry.js",
       },
-      name: "home",
+      name: "list",
       filename: "remoteEntry.js",
       exposes: {
         "./module": "./src/main.single-spa.ts",
       },
+      shared:["single-spa"] 
     }),
   ];
 

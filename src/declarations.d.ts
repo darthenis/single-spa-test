@@ -38,6 +38,6 @@ declare module "*.svg" {
   export default src;
 }
 
-declare module "home/module";
+declare module "form/module";
 
-declare module "login/module";
+declare module "list/module";

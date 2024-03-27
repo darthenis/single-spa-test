@@ -21,11 +21,11 @@ module.exports = (webpackConfigEnv, argv) => {
         library: { type: "var" },
         filename: "remoteEntry.js",
         remotes: {
-          home: "home",
-          login: "login",
+          form: "form",
+          list: "list",
         },
         exposes: {},
-        shared: [],
+        shared: ["single-spa"],
       }),
       new HtmlWebpackPlugin({
         inject: false,
