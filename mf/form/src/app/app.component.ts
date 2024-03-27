@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, NgZone } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { userState } from 'store/module';
 import { navigateToUrl } from 'single-spa';
@@ -10,6 +10,9 @@ import { navigateToUrl } from 'single-spa';
 })
 export class AppComponent {
   fb = inject(FormBuilder);
+  ngZone = inject(NgZone)
+
+  value = "asd"
 
   storeGroup = this.fb.group({
     name: ['', Validators.required],
@@ -17,9 +20,14 @@ export class AppComponent {
   });
 
   submit() {
+    
     if (this.storeGroup.invalid) return;
-    const { name, price } = this.storeGroup.value;
-    userState.login(name!, price!);
+    this.ngZone.runTask(() =>{
+      const { name, price } = this.storeGroup.value;
+      userState.login(name!, price!);
+      this.storeGroup.setValue({name: "", price: ""})
+    })
+
   }
 
   navigate(url: string) {
