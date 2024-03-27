@@ -1,0 +1,16 @@
+<div class="container mb-5">
+  <h1>Form Store</h1>
+  <form
+    [formGroup]="storeGroup"
+    (ngSubmit)="submit()"
+    class="d-flex flex-column gap-2"
+  >
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" />
+    <label for="price">Price</label>
+    <input type="text" formControlName="price" />
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+  <button class="btn btn-link" (click)="navigate('/store')">LIST</button>
+</div>

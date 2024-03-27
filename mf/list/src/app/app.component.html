@@ -1,0 +1,25 @@
+<div class="container pb-3">
+  <h1>List Store</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="storeItems.length; else noStore">
+      <tr *ngFor="let item of storeItems; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+      </tr>
+    </tbody>
+    <ng-template #noStore>
+      <p class="text-center w-full">Items not found</p>
+    </ng-template>
+  </table>
+
+  <button class="btn btn-link" (click)="navigate('/form')">ADD</button>
+</div>
