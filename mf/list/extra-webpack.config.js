@@ -52,7 +52,6 @@ module.exports = (config, options) => {
       exposes: {
         "./module": "./src/main.single-spa.ts",
       },
-      shared:["single-spa"] 
     }),
   ];
 
