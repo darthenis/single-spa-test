@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { userState, Item } from 'store/module';
 import { navigateToUrl } from 'single-spa';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,16 @@ import { navigateToUrl } from 'single-spa';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  storeItems: Item[] = [];
+  storeItems = new Observable<Item[]>();
 
   constructor(private ngZone: NgZone) {}
 
   ngOnInit(): void {
-    userState.store().subscribe((res) => {
+
       this.ngZone.runTask(() => {
-        this.storeItems = [...res];
+        this.storeItems = userState.store();
       });
-    });
+
   }
 
   navigate(url: string) {

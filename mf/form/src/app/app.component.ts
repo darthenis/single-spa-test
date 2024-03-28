@@ -12,8 +12,6 @@ export class AppComponent {
   fb = inject(FormBuilder);
   ngZone = inject(NgZone)
 
-  value = "asd"
-
   storeGroup = this.fb.group({
     name: ['', Validators.required],
     price: ['', Validators.required],

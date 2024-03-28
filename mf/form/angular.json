@@ -24,8 +24,7 @@
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
               "libraryName": "form",
-              "libraryTarget": "umd"
-            },
+              "libraryTarget": "umd"            },
             "deployUrl": "http://localhost:4201/"
           },
           "configurations": {
