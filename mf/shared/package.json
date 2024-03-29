@@ -1,5 +1,5 @@
 {
-  "name": "@moby/store",
+  "name": "shared",
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
@@ -50,5 +50,5 @@
     "rxjs": "^7.8.1",
     "single-spa": "^5.9.3"
   },
-  "types": "dist/moby-store.d.ts"
+  "types": "dist/main.d.ts"
 }

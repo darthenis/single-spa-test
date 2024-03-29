@@ -45,7 +45,7 @@ module.exports = (config, options) => {
         },
       },
       remotes: {
-        store: "store@http://localhost:8080/remoteEntry.js",
+        shared: "shared@http://localhost:8080/remoteEntry.js",
       },
       name: "list",
       filename: "remoteEntry.js",

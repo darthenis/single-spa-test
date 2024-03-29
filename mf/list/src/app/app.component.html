@@ -1,25 +1,46 @@
 <div class="container pb-3">
-  <h1>List Store</h1>
+  <h1>List {{ page  == "STORE" ? 'store' : 'user' }} </h1>
 
-  <table class="table">
+  <table class="table" *ngIf="listItems">
     <thead>
-      <tr>
+
+      <tr *ngIf="page == 'STORE'; else user">
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
       </tr>
+
+      <ng-template #user>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">email</th>
+          <th scope="col">password</th>
+        </tr>
+      </ng-template>
+
     </thead>
-    <tbody *ngIf="(storeItems | async)?.length; else noStore">
-      <tr *ngFor="let item of storeItems | async; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ item.name }}</td>
-        <td>{{ item.price }}</td>
-      </tr>
+
+    <tbody *ngIf="page == 'STORE'">
+        <tr *ngFor="let item of isItem(); let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+        </tr>
     </tbody>
-    <ng-template #noStore>
-      <p class="text-center w-full">Items not found</p>
-    </ng-template>
+
+    <tbody *ngIf="page == 'USER'">
+        <tr *ngFor="let item of isUser() ; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.password }}</td>
+        </tr>
+    </tbody>
+   
   </table>
 
-  <button class="btn btn-link" (click)="navigate('/form')">ADD</button>
+  <p *ngIf="!listItems.length" class="text-center w-full">{{page === "STORE" ? "Items" : "Users"}} not found</p>
+
+
 </div>

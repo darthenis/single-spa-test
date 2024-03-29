@@ -41,3 +41,5 @@ declare module "*.svg" {
 declare module "form/module";
 
 declare module "list/module";
+
+declare module "navBar/module";

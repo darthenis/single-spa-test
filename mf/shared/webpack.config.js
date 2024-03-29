@@ -4,8 +4,8 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: "moby",
-    projectName: "store",
+    orgName: "shell",
+    projectName: "shared",
     webpackConfigEnv,
     argv,
   });
@@ -17,10 +17,12 @@ module.exports = (webpackConfigEnv, argv) => {
     },
     plugins:[
       new ModuleFederationPlugin({
-        name: "store",
+        name: "shared",
         filename: "remoteEntry.js",
         exposes: {
-          "./module": "./src/moby-store.ts",
+          "./store": "./src/store",
+          "./user": "./src/user",
+          "./page": "./src/page",
         },
         shared: {
           "rxjs": {

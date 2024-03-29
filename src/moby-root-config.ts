@@ -13,6 +13,7 @@ const applications = constructApplications({
     const moduleMap = {
       "@app/list": () => import("list/module"),
       "@app/form": () => import("form/module"),
+      "@app/navBar": () => import("navBar/module"),
     };
     return moduleMap[name]();
   },

@@ -1,11 +1,11 @@
-const singleSpaAngularWebpack =
-  require("single-spa-angular/lib/webpack").default;
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = (config, options) => {
+
   config.output = {
     ...config.output,
-    uniqueName: "form",
+    uniqueName: "navBar",
   };
   config.optimization = { ...config.optimization, runtimeChunk: false };
   config.plugins = [
@@ -43,10 +43,10 @@ module.exports = (config, options) => {
           requiredVersion: "^9.0.1",
         },
       },
-      remotes: {
-        shared: "shared@http://localhost:8080/remoteEntry.js",
+      remotes:{
+        shared : "shared@http://localhost:8080/remoteEntry.js",
       },
-      name: "form",
+      name: "navBar",
       filename: "remoteEntry.js",
       exposes: {
         "./module": "./src/main.single-spa.ts",

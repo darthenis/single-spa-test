@@ -7,10 +7,10 @@ interface Item {
     price: string;
 }
 
-class UserState {
+class StoreState {
     private _store = new BehaviorSubject<Item[]>([])
 
-    public login(name : string, price: string){
+    public add(name : string, price: string){
         let array = [...this._store.value]
         this._store.next(array.concat({name, price}))
     }
@@ -21,4 +21,4 @@ class UserState {
 
 }
 
-export const userState = new UserState();
+export const storeState = new StoreState();

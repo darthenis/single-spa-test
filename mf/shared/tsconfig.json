@@ -1,6 +1,6 @@
 {
   "extends": "ts-config-single-spa",
-  "files": ["src/moby-store.ts"],
+  "files": ["src/shell-shared.ts"],
   "compilerOptions": {
     "declarationDir": "dist"
   },

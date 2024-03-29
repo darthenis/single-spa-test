@@ -23,6 +23,7 @@ module.exports = (webpackConfigEnv, argv) => {
         remotes: {
           form: "form",
           list: "list",
+          navBar: "navBar",
         },
         exposes: {},
         shared: ["single-spa"],

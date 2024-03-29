@@ -1,17 +1,31 @@
 <div class="container mb-5">
-  <h1>Form Store</h1>
+  <h1>Add {{page === "STORE" ? "store" : "user"}} </h1>
   <form
-    [formGroup]="storeGroup"
+    [formGroup]="page === 'STORE' ? storeGroup : userGroup"
     (ngSubmit)="submit()"
     class="d-flex flex-column gap-2"
   >
-    <label for="name">Name</label>
-    <input type="text" formControlName="name" />
-    <label for="price">Price</label>
-    <input type="text" formControlName="price" />
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+    <div class="d-flex flex-column gap-1">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" />
+    </div>
 
-  <button class="btn btn-link" (click)="navigate('/store')">LIST</button>
+    <div *ngIf="page === 'STORE'" class="d-flex flex-column gap-1">
+      <label for="price">Price</label>
+      <input type="text" formControlName="price" />
+    </div>
+
+    <div *ngIf="page === 'USER'" class="d-flex flex-column gap-1">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" />
+    </div>
+
+    <div *ngIf="page === 'USER'" class="d-flex flex-column gap-1">
+      <label for="password">Password</label>
+      <input type="text" formControlName="password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+  </form>
 
 </div>
